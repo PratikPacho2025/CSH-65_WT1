@@ -1,0 +1,334 @@
+:root {
+    --bg-deep: #051b2f;
+    --bg-mid: #0d2c4b;
+    --panel: rgba(15, 33, 52, 0.55);
+    --panel-strong: rgba(12, 26, 42, 0.68);
+    --panel-border: rgba(180, 200, 230, 0.18);
+    --text: #edf6ff;
+    --muted: rgba(237, 246, 255, 0.72);
+    --input-bg: rgba(101, 122, 145, 0.16);
+    --input-border: rgba(180, 200, 230, 0.25);
+    --button-start: #32b2f6;
+    --button-end: #2e7ef5;
+    --label: rgba(255, 255, 255, 0.8);
+    --shadow: rgba(0, 0, 0, 0.28);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 85% 80%, rgba(62, 179, 255, 0.28), transparent 24%),
+        linear-gradient(135deg, #041a2d 0%, #0a2744 38%, #0b233d 100%);
+}
+
+.page-shell {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+}
+
+.bill-card {
+    width: min(1200px, 100%);
+    background: linear-gradient(180deg, rgba(10, 28, 43, 0.85), rgba(9, 24, 38, 0.9));
+    border: 1px solid var(--panel-border);
+    border-radius: 18px;
+    box-shadow: 0 24px 55px var(--shadow);
+    padding: 24px 28px 18px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bill-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 0%, rgba(121, 167, 255, 0.16), transparent 30%);
+    pointer-events: none;
+}
+
+.top-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 34px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-panel {
+    padding: 8px 0 18px;
+}
+
+.hero-title {
+    margin: 0;
+    font-size: clamp(3rem, 4vw, 5rem);
+    line-height: 0.94;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: #f3f7ff;
+}
+
+.hero-copy {
+    max-width: 560px;
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 1.12rem;
+    line-height: 1.7;
+}
+
+.tariff-box {
+    margin-top: 28px;
+    padding: 20px 22px 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    max-width: 520px;
+}
+
+.tariff-box h3 {
+    margin: 0 0 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.tariff-box ul {
+    margin: 0;
+    padding-left: 1.35rem;
+    color: rgba(255, 255, 255, 0.9);
+    display: grid;
+    gap: 10px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.calculator-panel {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    border-radius: 18px;
+    padding: 26px 24px 20px;
+    min-height: 100%;
+}
+
+.calculator-panel h2 {
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 3vw, 3.1rem);
+    font-weight: 700;
+    color: var(--text);
+}
+
+.calculator-panel p {
+    margin: 0 0 26px;
+    color: var(--muted);
+    font-size: 0.96rem;
+}
+
+#billForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-label {
+    font-size: 0.98rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--label);
+}
+
+.form-control {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    color: var(--text);
+    font-size: 1.05rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.form-control:focus {
+    border-color: rgba(125, 198, 255, 0.8);
+    box-shadow: 0 0 0 0.2rem rgba(72, 171, 255, 0.2);
+}
+
+#clientError {
+    margin-top: 9px;
+    font-size: 0.84rem;
+    color: #ff8d8d;
+}
+
+.submit-btn {
+    margin-top: 18px;
+    border: none;
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    background: linear-gradient(90deg, var(--button-start), var(--button-end));
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(40, 116, 225, 0.35);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(40, 116, 225, 0.45);
+}
+
+.result-box {
+    background: rgba(12, 30, 45, 0.78);
+    border: 1px solid rgba(212, 232, 255, 0.15);
+    margin-top: 26px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.result-box h2 {
+    margin: 0 0 14px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.table {
+    width: 100%;
+    color: var(--text);
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 0.55rem 0.35rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.8rem;
+}
+
+.table thead th {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+}
+
+.total-row {
+    background: rgba(86, 186, 143, 0.12);
+    border: 1px solid rgba(147, 219, 177, 0.15);
+    border-radius: 10px;
+    margin-top: 8px;
+    padding: 0.9rem 1rem;
+    color: var(--text);
+}
+
+.info-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 34px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    z-index: 1;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 14px 18px;
+    min-height: 78px;
+}
+
+.info-icon {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 1.2rem;
+}
+
+.info-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.info-item strong {
+    font-size: 1.04rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+@media (max-width: 980px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-panel,
+    .calculator-panel {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .page-shell {
+        padding: 20px 14px;
+    }
+
+    .bill-card {
+        padding: 18px 16px 14px;
+    }
+
+    .info-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .calculator-panel h2 {
+        font-size: 2.2rem;
+    }
+}
